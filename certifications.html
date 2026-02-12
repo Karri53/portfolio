@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Karrington Hall - Portfolio</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="materials.html">Relevant Courses</a>
+        <a href="work_experience.html">Professional Experience</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="projects.html">Project Showcase</a>
+        <a href="comments.html">Comments & Feedback</a>
+    </nav>
+
+    <div class="page-title">
+        <center>
+            <h1>Certifications</h1>
+        </center>
+    </div>
+
+    <!-- Professional Certifications Introduction -->
+    <section class="cert-intro">
+        <h2>My Professional Certifications</h2>
+        <p>
+            Throughout my academic and professional journey, I have earned several certifications that validate
+            my expertise in <strong>cybersecurity, project management, cloud security, SQL, and software
+                development.</strong>
+            Below is a list of my earned certifications.
+        </p>
+    </section>
+
+    <!-- Certifications List with Numbers -->
+    <section class="cert-list">
+        <div class="cert-item"><strong> 1. <a href="https://drive.google.com/file/d/1O2MZqXV45km7GP03k0n_3AuUq3Gz7NlI/view?usp=drive_link" target="_blank" class="project-link">Agile Project Management with Microsoft Project</strong></a> (LinkedIn Learning, 2025)</div>
+        
+        <div class="cert-item"><strong> 2. <a href="https://drive.google.com/file/d/1WLQtHNElAISWlB9P0c_YUU8zPapy1l0c/view?usp=drive_link" target="_blank" class="project-link">Cybersecurity Awareness: Cybersecurity Terminology</strong></a> (LinkedIn Learning, 2025)</div>
+
+        
+        <div class="cert-item"><strong> 3. <a href="https://drive.google.com/file/d/1q_0ciovvE2F0MuL7uDcRFd4BvYeTCScx/view?usp=drive_link" target="_blank" class="project-link">Google Cloud Professional Cloud Security Engineer Cert Prep </strong></a> (LinkedIn Learning, 2025)</div>
+        
+        <div class="cert-item"><strong> 4. <a href="https://drive.google.com/file/d/1H5B9XxD8cMLzHtC14gOj5d7wqrG296jO/view?usp=drive_link" class="project-link">Project Manegement Technical Projects</strong></a> (LinkedIn Learning, 2025)</div>
+        
+        <div class="cert-item"><strong> 5. <a href="https://drive.google.com/file/d/1l7o43KT3F9CQbOKMi0aCs81OGFD_Ld8M/view?usp=drive_link" target="_blank" class="project-link">Python for Non-Programmers</strong></a> (LinkedIn Learning, 2025)</div>
+        
+        <div class="cert-item"><strong> 6. <a href="https://drive.google.com/file/d/1nmjqCFuYQHl5pjCqBuXeZOz_vIG0Nnwl/view?usp=drive_link" target="_blank" class="project-link">SQL Essential Training</strong></a> (LinkedIn Learning, 2025)</div>
+        
+        <div class="cert-item"><strong> 7. <a href="https://drive.google.com/file/d/1rDJeXHtFZI1IozRcyfkxyEeRXf5F2-A3/view?usp=drive_link" target="_blank" class="project-link">SQL for Data Analysis</strong></a> (LinkedIn Learning, 2025)</div>
+        
+        <div class="cert-item"><strong> 8. <a href="https://drive.google.com/file/d/1Z4T4oxQIvWa-8DqiufIPo-4-z3ezhFrN/view?usp=drive_link" target="_blank" class="project-link">Cybersecurity Threat Landscape</strong></a> (LinkedIn Learning, 2025)</div>
+
+        <div class="cert-item"><strong> 9. <a href="https://drive.google.com/file/d/1Jx_gvjQKQbonK63csXPPvbxYDWvD6DS9/view?usp=sharing" target="_blank" class="project-link">Prompt Engineering</strong></a> (internXL - Afro Tech 2025, 2025)</div>
+
+    <!-- Search Section (Number-Based) -->
+    <section class="search-section">
+        <h3>Certification Descrpitions</h3>
+        <p>(Select the number of a certification to view its details.)</p>
+        <form id="certSearchForm">
+            <input type="number" id="certSearch" placeholder="Enter Certification Number" min="1" max="8">
+            <button type="button" onclick="searchCert()">Search</button>
+        </form>
+        <div id="search-results"></div>
+    </section>
+
+    <!-- SQL Data Display with Scrollable Container -->
+    <section class="sql-data">
+        <h2><center>Certifications</center></h2>
+        <p><center>(Below is the SQL code that structures and inserts certifications into a database.)</center></p>
+        <div class="sql-scroll-container">
+            <pre id="sqlOutput">Loading SQL data...</pre>
+        </div>
+    </section>
+
+
+    <footer>The <strong>SQL</strong> code shown above is fetched from an external file and displayed for reference.
+    </footer>
+
+    <script>
+        function searchCert() {
+            let query = document.getElementById("certSearch").value.trim();
+            let searchResults = document.getElementById("search-results");
+
+            if (!query || isNaN(query) || query < 1 || query > 8) {
+                searchResults.innerHTML = "<p>Please enter a valid certification number (1-8).</p>";
+                return;
+            }
+
+            // Certification data mapped to numbers
+            let certifications = {
+                1: {name: "Agile Project Management", description: "Covers Agile frameworks like Scrum, Kanban, and Lean principles."},
+                2: {name: "Cybersecurity Awareness", description: "Provides an overview of cyber threats and best practices."},
+                3: {name: "Google Cloud Security Engineer", description: "Focuses on securing cloud environments, access control, and compliance."},
+                4: {name: "Project Management", description: "Explores project lifecycle, stakeholder communication, and risk management strategies."},
+                5: {name: "Python for Non-Programmers", description: "Introduces Python fundamentals for beginners."},
+                6: {name: "SQL Essential Training", description: "Covers database structures and data manipulation using SQL."},
+                7: {name: "SQL for Data Analysis", description: "Explains SQL techniques for querying large datasets."},
+                8: {name: "Cybersecurity Threat Landscape", description: "Analyzes modern cyber threats, attack vectors, and prevention strategies."}
+            };
+
+            let cert = certifications[query];
+            searchResults.innerHTML = `<p><strong>${cert.name}</strong>: ${cert.description}</p>`;
+        }
+
+        // Fetch and display SQL code
+        fetch('certifications.sql')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("sqlOutput").textContent = data;
+            })
+            .catch(error => console.log("Error loading SQL file:", error));
+    </script>
+
+</body>
+
+</html>

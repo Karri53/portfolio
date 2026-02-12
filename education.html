@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+    <header>
+        Karrington Hall - Portfolio
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="materials.html">Relevant Courses</a>
+        <a href="work_experience.html">Professional Experience</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="projects.html">Project Showcase</a>
+        <a href="comments.html">Comments & Feedback</a>
+    </nav>
+
+    <div class="page-title">
+        <center>
+            <h1>Education</h1>
+        </center>
+    </div>
+
+    <main>
+        <div class="content-row">
+            <!-- Left Side - Education 1 -->
+            <section class="section-card left">
+                <img src="PVAMU.jpeg" alt="University Image" class="school-image">
+                <h2>Prairie View A&M University</h2>
+                <p>Roy G. Perry College of Engineering</p>
+                <p><strong>Degree:</strong> Bachelor of Science in Computer Science (Concentration in Cybersecurity)</p>
+                <p><strong>Anticipated Commencement:</strong> May 2026</p>
+                <p><strong>Camus Involvement:</strong></p>
+                <p>
+                <ul>
+                    <li>National Society of Blak Engineers (NSBE) 2019-2022</li>
+                    <li>Society of Women Engineers (SWE) 2019-2022</li>
+                </ul>
+                </p>
+            </section>
+
+            <!-- Right Side - Education 2 -->
+            <section class="section-card right">
+                <img src="Skyline.jpeg" alt="University Image" class="school-image">
+                <h2>Skyline High School</h2>
+                <p><strong>Degree:</strong> High School Diploma</p>
+                <p><strong>Graduation Year:</strong> June 2019</p>
+                <p><strong>Camus Involvement:</strong></p>
+                <p>
+                <ul>
+                    <li>National Honors Society (NSHS) 2017-2019</li>
+                    <li>Student Senate 2018-2019</li>
+                    <li>Advanced Math Club 2018-2019</li>
+                </ul>
+                </p>
+            </section>
+        </div>
+
+        <!-- Java Output Section -->
+        <section class="java-output">
+            <h2>Education Summary</h2>
+            <div class="code-container">
+                <pre id="javaOutput"></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>The <strong>Java</strong> code shown above is fetched from an external file and displayed for reference.
+    </footer>
+
+    <script>
+        // Fetch Java output
+        fetch('education.java')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("javaOutput").textContent = data;
+            })
+            .catch(error => console.log("Error loading Java file:", error));
+    </script>
+
+</body>
+
+</html>

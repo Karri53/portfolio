@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relevant Courses</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Karrington Hall - Portfolio</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="education.html">Education</a>
+        <a href="materials.html">Relevant Courses</a>
+        <a href="work_experience.html">Professional Experience</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="projects.html">Project Showcase</a>
+        <a href="comments.html">Comments & Feedback</a>
+    </nav>
+
+    <!-- Portfolio Header Image -->
+    <div class="page-title">
+        <center>
+            <h1>Enrolled Courses</h1>
+        </center>
+    </div>
+
+    <main>
+    
+        <section id="palindrome-explanation">
+            <ul>
+                <li><strong>Cryptography:</strong> Implemented classic and modern encryption schemes, including public/private key systems, digital signatures, and hash functions.</li>
+                <li><strong>Ethical Hacking & Penetration Testing:</strong> Applied principles and techniques of penetration testing to identify and mitigate system vulnerabilities in a hands-on environment.</li>
+                    heaps, sorting techniques.</li>
+                <li><strong>Network Security:</strong> Explored network security and information privacy through practical demonstrations in malware analysis, access control, and cloud security.</li>
+                <li><strong>Senior Design II:</strong> Executed a comprehensive technical project from research and proposal writing to final presentation and patent searches.</li>
+            </ul>
+        </section>
+        
+        <div class="page-title">
+            <center>
+                <h1>Relevant Courses</h1>
+            </center>
+        </div>
+        <section id="palindrome-explanation">
+            <ul>
+                <li><strong>Computer Organization:</strong> Study of computer levels, digital logic, microprogramming,
+                    conventional machines, OS, and assembly language.</li>
+                <li><strong>Computer Science I & II:</strong> Covers C++ programming, OOP, inheritance, linked lists,
+                    and fundamental problem-solving.</li>
+                <li><strong>Data Structures:</strong> Stacks, queues, recursion, advanced linked lists, trees, graphs,
+                    heaps, sorting techniques.</li>
+                <li><strong>Introduction to Information Security:</strong> Topics include malware, cryptography, access
+                    control, social engineering, and cloud security.</li>
+                <li><strong>Web Development:</strong> Designing and developing user-friendly websites.</li>
+            </ul>
+        </section>
+
+        <section class="header-image">
+            <img src="Materials.jpeg" alt="Portfolio Banner">
+        </section>
+
+
+        <div class="page-title">
+            <center>
+                <h1>Implementing Data Structures</h1>
+            </center>
+        </div>
+        <section id="palindrome-explanation">
+            <p>I first encountered the concept of palindromes in my Computer Organization course, where I learned about
+                binary representations and how data is processed at the machine level. Later, in my Data Structures
+                course, I explored stacks and recursion, which are essential for efficiently checking whether a word or
+                sequence is a palindrome.</p>
+        </section>
+
+        <section id="palindrome-explanation">
+            <h2>
+                <center>What is a Palindrome?</center>
+            </h2>
+            <p>A palindrome is a word, phrase, number, or sequence that reads the same forward and backward. Common
+                examples include "madam", "racecar", and "level". Palindromes ignore spaces, punctuation, and
+                capitalization.</p>
+
+            <p>Below, you'll find an interactive tool where you can enter a word or phrase to check if it's a
+                palindrome. Try it out and see how it works!</p>
+        </section>
+
+        <!-- Palindrome Interactive Section -->
+        <section id="palindrome-interactive">
+            <h2>
+                <center>Palindrome Checker (Interactive)</center>
+            </h2>
+            <p>
+                <center>Enter a word below to check if it's a palindrome!</center>
+            </p>
+
+            <center><input type="text" id="palindrome-input" placeholder="Enter a word">
+                <button onclick="checkPalindrome()">Check</button>
+                <p id="palindrome-result"></p>
+            </center>
+
+
+        </section>
+
+        <!-- JavaScript for Palindrome Checker -->
+        <script>
+            function checkPalindrome() {
+                let word = document.getElementById("palindrome-input").value.toLowerCase().replace(/[^a-z0-9]/g, '');
+                let reversed = word.split("").reverse().join("");
+
+                if (word.length === 0) {
+                    document.getElementById("palindrome-result").textContent = "Please enter a word.";
+                    return;
+                }
+
+                if (word === reversed) {
+                    document.getElementById("palindrome-result").textContent = `"${word}" is a palindrome! ✅`;
+                } else {
+                    document.getElementById("palindrome-result").textContent = `"${word}" is NOT a palindrome. ❌`;
+                }
+            }
+        </script>
+
+        <!-- C++ Code Display -->
+        <section id="palindrome-code">
+            <h2>
+                <center>Palindrome C++ Code (main only)</center>
+            </h2>
+            
+                <p><center>Want to see the full implementation? <a href="https://replit.com/@Karrington53/Palindrome?v=1" target="_blank">View Full Code on
+                        Replit</a></center></p>
+            
+
+            <div class="code-scroll-container">
+                <pre id="cppOutput">Loading...</pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>The <strong>C++</strong> code shown above is fetched from an external file and displayed for reference.
+    </footer>
+
+    <script>
+        fetch('Palindrome_Main.cpp')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("cppOutput").textContent = data;
+            })
+            .catch(error => console.log("Error loading C++ file:", error));
+    </script>
+
+</body>
+
+</html>
