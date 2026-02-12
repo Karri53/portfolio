@@ -1,0 +1,233 @@
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template <class itemtype>
+struct st {
+    itemtype a;
+    st *next;
+};
+
+// Stack class using linked list
+template <class itemtype>
+class s {
+  public:
+    s();
+    ~s();
+    void push(itemtype c);
+    itemtype pop();
+    bool isempty();
+    bool isfull();
+    void print();
+  private:
+    st<itemtype> *top;
+};
+
+template <class itemtype>
+s<itemtype>::s() {
+    top = NULL;
+}
+
+template <class itemtype>
+s<itemtype>::~s() {
+    while (!isempty()) {
+        pop();
+    }
+}
+
+// Pushes an item into the stack
+template <class itemtype>
+void s<itemtype>::push(itemtype c) {
+    st<itemtype> *t = new st<itemtype>;
+    t->a = c;
+    t->next = top;
+    top = t;
+}
+
+// Pops an item from the stack
+template <class itemtype>
+itemtype s<itemtype>::pop() {
+    if (isempty()) {
+        throw runtime_error("Stack is empty!");
+    }
+    itemtype x = top->a;
+    st<itemtype> *t = top;
+    top = top->next;
+    delete t;
+    return x;
+}
+
+// Checks if the stack is empty
+template <class itemtype>
+bool s<itemtype>::isempty() {
+    return top == NULL;
+}
+
+// Checks if the stack is full
+template <class itemtype>
+bool s<itemtype>::isfull() {
+    st<itemtype> *ptr = new (nothrow) st<itemtype>;
+    if (ptr == NULL) return true;
+    delete ptr;
+    return false;
+}
+
+// Queue node structure
+template <class itemtype>
+struct nodetype {
+    itemtype info;
+    nodetype *next;
+};
+
+// Queue class using linked list
+template <class itemtype>
+class quetype {
+  public:
+    quetype();
+    ~quetype();
+    void makeempty();  
+    void enqueue(itemtype);  
+    void dequeue(itemtype &);
+    bool isempty();
+    bool isfull();
+  private:
+    nodetype<itemtype> *qfront, *qrear;
+};
+
+template <class itemtype>
+quetype<itemtype>::quetype() {
+    qfront = qrear = NULL;
+}
+
+template <class itemtype>
+quetype<itemtype>::~quetype() {
+    makeempty();
+}
+
+// Empty the queue by deleting all nodes
+template <class itemtype>
+void quetype<itemtype>::makeempty() {
+    nodetype<itemtype> *tempptr;
+    while (qfront != NULL) {
+        tempptr = qfront;
+        qfront = qfront->next;
+        delete tempptr;
+    }
+    qrear = NULL;
+}
+
+// Check if queue is empty
+template <class itemtype>
+bool quetype<itemtype>::isempty() {
+    return qfront == NULL;
+}
+
+// Check if queue is full
+template <class itemtype>
+bool quetype<itemtype>::isfull() {
+    nodetype<itemtype> *ptr = new (nothrow) nodetype<itemtype>;
+    if (ptr == NULL) return true;
+    delete ptr;
+    return false;
+}
+
+// Adds an item to the queue
+template <class itemtype>
+void quetype<itemtype>::enqueue(itemtype item) {
+    nodetype<itemtype> *newnode = new nodetype<itemtype>;
+    newnode->info = item;
+    newnode->next = NULL;
+    if (qrear == NULL) 
+        qfront = newnode;
+    else 
+        qrear->next = newnode;
+    qrear = newnode;
+}
+
+// Removes an item from the queue
+template <class itemtype>
+void quetype<itemtype>::dequeue(itemtype &item) {
+    if (isempty()) {
+        throw runtime_error("Queue is empty!");
+    }
+    nodetype<itemtype> *tempptr = qfront;
+    item = qfront->info;
+    qfront = qfront->next;
+    if (qfront == NULL) 
+        qrear = NULL;
+    delete tempptr;
+}
+
+// Function to check if a character is alphabetic
+bool isAlpha(char ch) {
+    return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
+}
+
+// Function to convert a character to lowercase
+char toLower(char ch) {
+    if (ch >= 'A' && ch <= 'Z') {
+        return ch + 32; 
+    }
+    return ch;
+}
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string line;
+    char choice;
+
+    do {
+        cout << "\nWould you like to give it a try? Type a word or phrase and press Enter: (e.g., racecar, madam, 12321)\n";
+        getline(cin, line);
+
+        // Process input for palindrome check
+        string processedItem;
+        for (char ch : line) {
+            // Check if the character is alphanumeric (letter or number)
+            if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {
+                // Convert uppercase letters to lowercase manually
+                if (ch >= 'A' && ch <= 'Z') {
+                    ch += 32;  // Convert to lowercase
+                }
+                processedItem += ch;
+            }
+        }
+
+        // Push characters onto stack
+        string reverseItem;
+        for (int i = processedItem.size() - 1; i >= 0; i--) {
+            reverseItem += processedItem[i];
+        }
+
+        // Output result
+        if (processedItem == reverseItem) {
+            cout << "\"" << line << "\" is a palindrome." << endl;
+            cout << "That's great! Would you like to try again? (y/n): ";
+        } else {
+            cout << "\"" << line << "\" is not a palindrome." << endl;
+            cout << "That's okay, would you like to try again? (y/n): ";
+        }
+
+        // Input validation loop
+        while (true) {
+            cin >> choice;
+            cin.ignore();  // Clears newline character
+
+            if (choice == 'y' || choice == 'Y' || choice == 'n' || choice == 'N') {
+                break;  // Valid input, exit loop
+            }
+
+            cout << "Invalid input. Please enter 'y' to try again or 'n' to exit: ";
+        }
+
+    } while (choice == 'y' || choice == 'Y');
+
+    cout << "Thanks for playing! Goodbye.\n";
+    return 0;
+}
